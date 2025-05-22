@@ -2,7 +2,7 @@ use rand::Rng;
 use std::io;
 
 fn main() {
-    let mut rng = rand::thread_rng(); // Random number generator
+    let mut rng = rand::rng(); // Random number generator
     let mut dice: [i32; 5] = [0; 5]; // Array to hold 5 dice values
     let labels = ['A', 'B', 'C', 'D', 'E']; // Labels for each die
     let mut input = String::new();
