@@ -2,7 +2,7 @@ use rand::Rng;
 use std::io;
 
 fn main() {
-    let mut rng = rand::thread_rng(); // Random number generator
+    let mut rng = rand::rng(); // Random number generator
     let mut dice: [i32; 5] = [0; 5]; // Array to hold 5 dice values
     let labels = ['A', 'B', 'C', 'D', 'E']; // Labels for each die
     let mut input = String::new();
@@ -63,7 +63,7 @@ fn main() {
 // Rolls all dice at once for a new turn
 fn roll_all_dice(dice: &mut [i32; 5], rng: &mut rand::rngs::ThreadRng) {
     for die in dice.iter_mut() {
-        *die = rng.gen_range(1..=6);
+        *die = rng.random_range(1..=6);
     }
 }
 
@@ -84,7 +84,7 @@ fn reroll_dice(
 ) {
     for &choice in choices {
         if let Some(index) = labels.iter().position(|&label| label.eq_ignore_ascii_case(&choice)) {
-            dice[index] = rng.gen_range(1..=6);
+            dice[index] = rng.random_range(1..=6);
             println!("Rerolled {}...", labels[index]);
         } else {
             println!("Invalid selection: {}", choice);
